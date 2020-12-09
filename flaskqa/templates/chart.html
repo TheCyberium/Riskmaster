@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Chart{% endblock %}
+
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+<canvas id="myChart"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels : ["Identify", "Detect", "Protect", "Respond", "Recover"],
+        datasets: [{
+            label: 'Current',
+            data: [{% for value in values -%}{{ value }},{% endfor -%}],
+            backgroundColor: [
+                'rgba(0, 176, 240, 0.4)',
+                'rgba(, 176, 140, 0.2)',
+                'rgba(255, 106, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            color: [
+                'rgba(255, 25, 0, 1)'
+            ],
+            borderColor: [
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ]
+        }],
+    },
+    options: {
+        scale: {
+            pointLabels: {
+                fontSize: 14
+            },
+            gridLines: {
+                color: 'rgba(201, 201, 201, 0.1)',
+                lineWidth: 2.2
+            },
+            ticks: {
+                beginAtZero: true,
+                max: 4,
+                min: 0,
+                stepSize: 1
+            }
+        },
+    legend: {
+        defaultfontSize: "60",
+        labels: {
+            // This more specific font property overrides the global property
+            defaultFontColor: 'white',
+            }
+        }
+    }
+});
+</script>
+{% endblock %}
