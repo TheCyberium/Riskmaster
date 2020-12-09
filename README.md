@@ -2,8 +2,8 @@ This is a free tool to help organisations and companies with their NIST assessme
 
 There are two types of roles: Admin or Expert. Admin creates users and experts answer questions. Averages answers to ratings 1-5 is rendered in a star shaped risk profile.
 
-Environment variables: 
+I've been hacking away at this but feel free to use it and develop it.  
 
-pip install Flask
+Environment variables: 
 export FLASK_APP=riskmaster.py
 
